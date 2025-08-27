@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YOUR NAME — Portfolio</title>
+  <meta name="description" content="Personal website and portfolio for YOUR NAME: role, experience, projects, and contact information." />
+  <meta property="og:title" content="YOUR NAME — Portfolio" />
+  <meta property="og:description" content="Personal website and portfolio for YOUR NAME." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-domain.example" />
+  <meta property="og:image" content="https://your-domain.example/og-image.png" />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --panel: #12161b;
+      --text: #e7ecf3;
+      --muted: #a7b0bd;
+      --accent: #6ee7b7; /* mint */
+      --accent-2: #60a5fa; /* soft blue */
+      --border: #1e252e;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7fafc;
+        --panel: #ffffff;
+        --text: #0d1117;
+        --muted: #4b5563;
+        --border: #e5e7eb;
+        --shadow: 0 10px 30px rgba(0,0,0,.08);
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 24px; }
+    .skip-link { position: absolute; left: -9999px; top: -9999px; }
+    .skip-link:focus { left: 16px; top: 16px; background: var(--panel); padding: 8px 12px; border-radius: 10px; box-shadow: var(--shadow); }
+
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(140%) blur(6px); background: color-mix(in srgb, var(--bg) 70%, transparent); border-bottom: 1px solid var(--border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.4px; }
+    .brand .dot { width: 10px; height: 10px; border-radius: 999px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display: inline-block; }
+    .nav a { padding: 10px 12px; border-radius: 12px; }
+    .nav a:hover { background: var(--panel); }
+
+    .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: center; padding: 48px 0; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 22px; padding: 24px; box-shadow: var(--shadow); }
+    .title { font-size: clamp(28px, 4.5vw, 44px); font-weight: 800; letter-spacing: .3px; line-height: 1.15; margin: 0 0 12px; }
+    .subtitle { font-size: clamp(16px, 2vw, 18px); color: var(--muted); margin: 0 0 20px; }
+
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 16px; border-radius: 14px; border: 1px solid var(--border); background: var(--panel); cursor: pointer; font-weight: 600; }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #0b0d10; border-color: transparent; }
+    .btn:hover { transform: translateY(-1px); }
+
+    .pill { display: inline-flex; align-items: center; gap: 8px; background: var(--panel); border: 1px solid var(--border); padding: 6px 10px; border-radius: 999px; font-size: 12px; color: var(--muted); }
+
+    .section { padding: 32px 0; }
+    .section h2 { font-size: 22px; margin: 0 0 16px; letter-spacing: .2px; }
+
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .col-6 { grid-column: span 6; }
+    .col-4 { grid-column: span 4; }
+    .col-12 { grid-column: span 12; }
+
+    .project { display: flex; flex-direction: column; gap: 10px; }
+    .project h3 { margin: 0; font-size: 18px; }
+    .project p { margin: 0; color: var(--muted); }
+
+    .timeline { display: grid; gap: 12px; }
+    .item { display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: start; }
+    .item .when { color: var(--muted); font-size: 14px; }
+
+    form { display: grid; gap: 12px; }
+    input, textarea { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--panel); color: var(--text); }
+    textarea { min-height: 120px; resize: vertical; }
+    label { font-size: 14px; color: var(--muted); }
+
+    footer { padding: 24px 0 48px; color: var(--muted); }
+
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+      .col-6, .col-4, .col-12 { grid-column: span 1; }
+      .item { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header>
+    <div class="container nav">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> <span>YOUR NAME</span></div>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="hero">
+      <div class="card">
+        <p class="pill">Open to opportunities · London, UK</p>
+        <h1 class="title">Hi, I'm <span style="background:linear-gradient(135deg, var(--accent), var(--accent-2)); -webkit-background-clip:text; background-clip:text; color: transparent;">YOUR NAME</span>.</h1>
+        <p class="subtitle">ROLE — short tagline about what you do and the value you bring. Keep it to one or two sentences.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">See my work</a>
+          <a class="btn" href="mailto:you@example.com">Email me</a>
+          <a class="btn" href="https://www.linkedin.com/in/YOUR-LINK" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div class="card">
+        <!-- You can replace this with an <img> tag of yourself -->
+        <div style="aspect-ratio:1/1; border-radius:16px; border:1px dashed var(--border); display:grid; place-items:center; color:var(--muted);">
+          Add your photo or logo here
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About</h2>
+      <div class="grid">
+        <div class="col-6 card">
+          <p>Write a short bio (4–6 lines). Mention what you’re great at, industries you’ve worked in, and a note about your interests. Keep it human.</p>
+          <ul>
+            <li>✅ Highlight 2–3 core strengths</li>
+            <li>✅ Tools/skills you’re comfortable with</li>
+            <li>✅ A personal detail to be memorable</li>
+          </ul>
+        </div>
+        <div class="col-6 card">
+          <h3>Quick facts</h3>
+          <ul>
+            <li>Based in London, open to remote</li>
+            <li>Current focus: YOUR FOCUS</li>
+            <li>Pronounced wins: a metric or milestone</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <h2>Experience</h2>
+      <div class="card timeline">
+        <div class="item">
+          <div class="when">2022 — Present</div>
+          <div>
+            <strong>Company — Role</strong>
+            <p class="muted">One or two lines on your impact. Start with a verb and include a metric if you can.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="when">2020 — 2022</div>
+          <div>
+            <strong>Company — Role</strong>
+            <p class="muted">Another role with outcomes. What changed because of you?</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="col-4 card project">
+          <h3>Project A →</h3>
+          <p>What it is, who it’s for, your role, and a result. Link out if live.</p>
+          <a class="pill" href="#">Live demo</a>
+        </div>
+        <div class="col-4 card project">
+          <h3>Project B →</h3>
+          <p>As above. Keep it skimmable.</p>
+          <a class="pill" href="#">Case study</a>
+        </div>
+        <div class="col-4 card project">
+          <h3>Project C →</h3>
+          <p>Add a third for balance, or remove this card.</p>
+          <a class="pill" href="#">Repository</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <div class="card">
+        <!-- Replace the `action` with your Formspree/Formspark endpoint if you want a working form. -->
+        <form action="#" method="POST">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required />
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Hello! I'd like to…" required></textarea>
+
+          <button class="btn primary" type="submit">Send message</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="container">
+      <div>© <span id="year"></span> YOUR NAME. Built with HTML + CSS. Hosted on GitHub Pages.</div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const href = a.getAttribute('href');
+        const el = document.querySelector(href);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, '', href);
+      });
+    });
+  </script>
+</body>
+</html>
