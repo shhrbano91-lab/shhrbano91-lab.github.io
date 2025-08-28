@@ -1,92 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sheher Bano</title>
   <style>
     /* Reset */
-    body, h1, p {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #f7cac9, #92a8d1); /* pastel pink to blue */
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       color: #333;
+      background-color: #f9f9f9;
       line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
 
-    header {
-      background: rgba(255, 255, 255, 0.8);
-      padding: 20px;
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #333;
-    }
-
+    /* Navigation Bar */
     nav {
-      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav h1 {
+      font-size: 1.5rem;
+      color: #4a4e69;
     }
 
     nav a {
-      margin: 0 10px;
+      margin-left: 20px;
       text-decoration: none;
       color: #4a4e69;
-      font-weight: bold;
+      font-weight: 500;
+      transition: color 0.3s;
     }
 
-    main {
-      flex: 1;
-      padding: 40px;
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    nav a:hover {
+      color: #9a8c98;
     }
 
-    h1 {
-      color: #4a4e69;
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(to right, #f7cac9, #92a8d1);
+      color: #333;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
       margin-bottom: 20px;
     }
 
-    p {
-      margin-bottom: 15px;
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: auto;
     }
 
+    /* Main Content */
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #4a4e69;
+    }
+
+    section p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      padding: 15px;
+      padding: 20px;
       font-size: 0.9rem;
-      background: rgba(255, 255, 255, 0.6);
-      border-top: 1px solid #ccc;
+      color: #666;
+      background: #f1f1f1;
+      border-top: 1px solid #ddd;
     }
   </style>
 </head>
 <body>
-  <header>
-    🌸 Welcome to My Website 🌸
-    <!-- New navigation bar -->
-    <nav>
+  <!-- Navigation -->
+  <nav>
+    <h1>Sheher Bano</h1>
+    <div>
       <a href="index.html">Home</a>
-      <a href="about.html">About Me</a>
-    </nav>
-  </header>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
 
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2>Hello, I’m Sheher Bano 👋</h2>
+    <p>
+      I’m passionate about technology, project management, and building creative solutions. 
+      Welcome to my corner of the internet 🌸
+    </p>
+  </section>
+
+  <!-- Main Content -->
   <main>
-    <h1>Hello, I’m Sheher Bano</h1>
-    <p>This is my personal website where I share my journey, ideas, and projects.</p>
-    <p>Stay tuned for updates 💻✨</p>
+    <section>
+      <h3>About Me</h3>
+      <p>
+        I have experience in project management, software, and education. 
+        This website is where I share my journey, ideas, and projects.
+      </p>
+    </section>
+
+    <section>
+      <h3>Projects</h3>
+      <p>
+        Here you can highlight some of your key projects, achievements, or case studies.
+      </p>
+    </section>
+
+    <section>
+      <h3>Contact</h3>
+      <p>
+        Feel free to reach out via LinkedIn or email to connect with me.
+      </p>
+    </section>
   </main>
 
+  <!-- Footer -->
   <footer>
-    © 2025 Sheher Bano | Built with 💖 on GitHub Pages
+    © <span id="year"></span> Sheher Bano | Built with 💖 on GitHub Pages
   </footer>
+
+  <script>
+    // Auto update year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
